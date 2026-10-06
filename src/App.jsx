@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import './App.css'
 
+const API_URL = 'https://lab6-backend-yyk9.onrender.com'
+
 function App() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -24,7 +26,7 @@ function App() {
     setMessage('')
 
     try {
-      const response = await fetch('http://127.0.0.1:3000/login', {
+      const response = await fetch(`${API_URL}/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -59,7 +61,7 @@ function App() {
   // GET PRODUCTS
   const getProducts = async (token) => {
     try {
-      const response = await fetch('http://127.0.0.1:3000/products', {
+      const response = await fetch(`${API_URL}/products`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -88,7 +90,7 @@ function App() {
     const token = localStorage.getItem('access_token')
 
     try {
-      const response = await fetch('http://127.0.0.1:3000/products', {
+      const response = await fetch(`${API_URL}/products`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -147,7 +149,7 @@ function App() {
 
     try {
       const response = await fetch(
-        `http://127.0.0.1:3000/products/${editingId}`,
+        `${API_URL}/products/${editingId}`,
         {
           method: 'PUT',
           headers: {
@@ -202,7 +204,7 @@ function App() {
 
     try {
       const response = await fetch(
-        `http://127.0.0.1:3000/products/${id}`,
+        `${API_URL}/products/${id}`,
         {
           method: 'DELETE',
           headers: {
